@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>urlShortner</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+    }
+    h1{
+        display: flex;
+        justify-content: center;
+    }
+    form{
+        display: inline;
+        justify-content: center;
+        margin: 10px 15px 10px 15px;
+    }
+    form #fullUrl{
+        margin: 2px;
+        height: 25px;
+    }
+    form button{
+        padding: 10px;
+        cursor: pointer;
+        background-color: green;
+        border: none;
+        color: white;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+    table{
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        justify-content: space-between;
+    }
+</style>
+<body>
+    <h1>URL Shortner</h1>
+    <div class="container">
+        <form action="/shortUrls" method="POST">
+            <label for="fullUrl">Full Url</label>
+            <input required type="url" name="fullUrl" id="fullUrl">
+            <button type="submit">Shrink</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shortUrls.forEach(shortUrls => { %>
+                    <tr>
+                        <td><a href="<%= shortUrls.full %>" target="_blank"><%= shortUrls.full %></a></td>
+                        <td><a href="<%= shortUrls.short %>" target="_blank"><%= shortUrls.short %></a></td>
+                        <td><%= shortUrls.clicks %></td>
+                    </tr>
+               <% }) %>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

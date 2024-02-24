@@ -1,0 +1,1 @@
+A simple app which lets you generate short urls and then it can be use to redirect to the original website.
